@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+<h1 >This is new landing page of django </h1>
+
+<form action="{% url 'data' %}" method="post" , enctype="multipart/form-data">
+     {% csrf_token %}
+     Name: <input type="text" name="a" value="">
+     Email: <input type="email" name="b" value="">
+     Contact: <input type="number" name="c" value="">
+     Image: <input type="file" name="d" value="">
+     Resume: <input type="file" name="e" value="">
+
+     <input type="submit" value="Submit">
+
+</form>
