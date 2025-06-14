@@ -1,15 +1,27 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+{% if key and key2 %}
 <h1 >This is new landing page of django </h1>
-
-<form action="{% url 'data' %}" method="post" , enctype="multipart/form-data">
+{{key2}}
+{% elif  key2 %}
+<h2>This is key data</h2>
+{% comment %} {{key}} {% endcomment %}
+{{key2}}
+{% else %}
+<form action="{% url 'home' %}" method="post" , enctype="multipart/form-data">
      {% csrf_token %}
+
      Name: <input type="text" name="a" value="">
+    <br><br>
      Email: <input type="email" name="b" value="">
+    <br><br>
      Contact: <input type="number" name="c" value="">
+    <br><br>
      Image: <input type="file" name="d" value="">
+    <br><br>
      Resume: <input type="file" name="e" value="">
-
-     <input type="submit" value="Submit">
-
+    <br><br>
+      <input type="submit" value="Submit">
+      
 </form>
+{% endif %}
