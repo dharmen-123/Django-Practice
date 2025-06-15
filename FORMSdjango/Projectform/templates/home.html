@@ -1,6 +1,7 @@
 <h1>Registration from</h1>
 
-<form action="" method="post" enctype="multipart/form-data">
+<form action="{% url 'data' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
   {{fm}}
   <br>
   <button type="submit">Submit</button>
