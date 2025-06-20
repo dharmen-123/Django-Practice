@@ -48,9 +48,18 @@ def logindata(req):
     if req.method=="POST":
         name = request.POST.get('username')
         password = request.POST.get('password')
-        data=Student.objects.get(email==email)
+        data=Student.objects.filter(email=email)
         if data:
-           pass
+           print("hello.......")
+           userdata=Student.objects.get(email=email)
+           pass1=userdata.password
+           if password==pass1:
+              return render(req,'home.html')
+           else :
+              msg="Email and password is not matched"
+              return render(req,'login.html',{'msg':msg})
+        else:
+            pass
     else:
         return render(req,'home.html')
 
