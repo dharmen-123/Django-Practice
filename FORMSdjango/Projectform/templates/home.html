@@ -1,8 +1,9 @@
 <h1>Registration from</h1>
-
-<form action="{% url 'data' %}" method="post" enctype="multipart/form-data">
+{{msg}}
+<form action="" method="post" enctype="multipart/form-data"  novalidate>
   {% csrf_token %}
-  {{fm}}
+
+  {{fm.as_p}}
   <br>
   <button type="submit">Submit</button>
 </form>
