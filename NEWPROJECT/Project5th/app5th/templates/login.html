@@ -8,4 +8,15 @@
 <br>
 <h1>This is Login Page</h1>
 <br>
+<form action="{% url 'logindata' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+     <br> 
+   <label for="email">Email:</label>
+   <input type="email" name="email" placeholder="Enter your email">
+   <br>
+   <label for="password">Password:</label>
+   <input type="password" name="password">
+   <br>
+   <input type="submit" value="Submit">
+</form>
 {% endblock  %}

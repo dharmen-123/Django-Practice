@@ -14,6 +14,10 @@ def contact(req):
 def services(req):
     return render(req,'services.html')
 
+def login(req):
+    return render(req,'login.html')
+
+
 def register(request):
     if request.method=="POST":
         name = request.POST.get('username')
@@ -39,8 +43,16 @@ def register(request):
                 return redirect('register')
     else:
         return render(request,'register.html')
-def login(req):
-    return render(req,'login.html')
+
+def logindata(req):
+    if req.method=="POST":
+        name = request.POST.get('username')
+        password = request.POST.get('password')
+        data=Student.objects.get(email==email)
+        if data:
+           pass
+    else:
+        return render(req,'home.html')
 
 
 

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from app5th import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('register/', views.register, name='register'),
     path('login', views.login, name='login'),
+    path('logindata', views.logindata, name='logindata'),
 ]

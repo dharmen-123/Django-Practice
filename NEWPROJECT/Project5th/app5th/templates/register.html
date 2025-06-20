@@ -105,20 +105,20 @@ register.html:---
 
     {% csrf_token %}
    <label for="username">Name:</label>
-   <input type="text" name="username" placeholder="Enter your name">
+   <input type="text" name="username" placeholder="Enter your name" required>
    <br> 
    <label for="email">Email:</label>
-   <input type="email" name="email" placeholder="Enter your email">
+   <input type="email" name="email" placeholder="Enter your email"  required>
    <br>
    <label for="detail">Details:</label>
    <textarea name="detail" cols="20" rows="5"></textarea>
    <br>
    <label for="phone">Contact:</label>
-   <input type="number" name="phone" placeholder="Enter your phone number">
+   <input type="number" name="phone" placeholder="Enter your phone number"  required>
    <br>
    <br>
    <label for="dob">DOB:</label>
-   <input type="date" name="dob">
+   <input type="date" name="dob"  required>
    <br>
    <br>
    <label for="subscribe">Education:</label>
@@ -132,17 +132,17 @@ register.html:---
    <input type="radio" name="gender" value="female"> Female
    <br>
    <label for="profile-pic">Image:</label>
-   <input type="file" name="profile-pic" accept=".jpeg, .png" >
+   <input type="file" name="profile-pic" accept=".jpeg, .png"  required >
    <br>
 
    <label for="resume">Resume:</label>
-   <input type="file" name="resume" accept=".pdf, .doc" >
+   <input type="file" name="resume" accept=".pdf, .doc"  required>
    <br>
    <label for="password">Password:</label>
-   <input type="password" name="password">
+   <input type="password" name="password"  required>
    <br>
    <label for="password">Con_Password:</label>
-   <input type="password" name="cpassword">
+   <input type="password" name="cpassword"  required>
    <br>
    <input type="submit" value="Submit">
 
