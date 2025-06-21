@@ -46,22 +46,37 @@ def register(request):
 
 def logindata(req):
     if req.method=="POST":
-        name = request.POST.get('username')
-        password = request.POST.get('password')
+        email = req.POST.get('email')
+        password = req.POST.get('password')
         data=Student.objects.filter(email=email)
         if data:
            print("hello.......")
            userdata=Student.objects.get(email=email)
            pass1=userdata.password
            if password==pass1:
-              return render(req,'home.html')
+                data={
+                'name': userdata.name,  
+                'email': userdata.email , 
+                'detail': userdata.detail,
+                'phone': userdata.phone  ,
+                'education': userdata.education,
+                'gender': userdata.gender  ,
+                'dob': userdata.dob  ,
+                'password': userdata.password,  
+                'profile_pic': userdata.profile_pic,  
+                'resume': userdata.resume
+                }  
+                return render(req,'dashboard.html',{'data':data})
            else :
               msg="Email and password is not matched"
               return render(req,'login.html',{'msg':msg})
         else:
-            pass
+            msg="Email is not registered"
+            return render(req,'register.html',{'msg':msg})
     else:
         return render(req,'home.html')
 
-
+def dashboard(req):
+     return render(req,'dashboard.html')
+     
 
