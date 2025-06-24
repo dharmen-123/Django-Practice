@@ -1,5 +1,5 @@
 """
-URL configuration for ProjectQuery project.
+URL configuration for Projectdata project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -17,10 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app6th import views 
+from app7th import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name='home'),
-
-
+    path('',views.home, name='home'),
 ]

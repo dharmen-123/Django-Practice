@@ -1,0 +1,61 @@
+<!-- 
+{{data}} 
+
+
+<br>
+<br><br>
+{{data2}}
+<br><br>
+
+{{data3}}
+
+<br><br>
+{{data4}} -->
+{% comment %} {{data}} {% endcomment %}
+<h1>Fisrt data </h1>
+<table border="1">
+    <thead >
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+           <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.name}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.city}}</td>
+              <td>{{i.contact}}</td>
+           </tr>
+           {% endfor %}
+    </tbody>
+</table>
+
+<br><br><h1>Last data </h1>
+<table border="1">
+    <thead >
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data2 %}
+           <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.name}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.city}}</td>
+              <td>{{i.contact}}</td>
+           </tr>
+           {% endfor %}
+    </tbody>
+</table>
