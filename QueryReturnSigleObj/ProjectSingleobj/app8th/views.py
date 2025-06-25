@@ -22,6 +22,9 @@ def home(req):
      # datadel=Stu.objects.get(id=8)
      # datadel.delete()
 
-     d1=Stu.objects.filter(name='Raja')
-     print(d1)
+     # d1=Stu.objects.filter(name='Raja')
+     # print(d1)
+
+     d2=Stu.objects.filter(city="Bhopal").update(city="MPnagar")
+     print(d2)
      # return  HttpResponse(data4)
