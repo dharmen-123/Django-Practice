@@ -11,6 +11,6 @@ def home(req):
      # data3=Stu.objects.last()
 
 
-     data4=Stu.objects.order_by('name').first()
-     # data4=Stu.objects.order_by('name').last()
+     # data4=Stu.objects.order_by('name').first()
+     data4=Stu.objects.order_by('name').last()
      return  HttpResponse(data4)
