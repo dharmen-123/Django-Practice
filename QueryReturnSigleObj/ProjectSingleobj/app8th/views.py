@@ -25,6 +25,11 @@ def home(req):
      # d1=Stu.objects.filter(name='Raja')
      # print(d1)
 
-     d2=Stu.objects.filter(city="Bhopal").update(city="MPnagar")
-     print(d2)
+     # d2=Stu.objects.filter(city="Bhopal").update(city="MPnagar")
+     # print(d2)
+
+     # d3=Stu.objects.all().count()
+     # print(d3)
+     
+     Stu.objects.bulk_create([Stu(name="Aagam",email='Agam@gamail.com',city='Bhopal',contact=9767478978),Stu(name="Harshit",email='harshit@gamail.com',city='Radhapuram',contact=7967456978)])
      # return  HttpResponse(data4)
