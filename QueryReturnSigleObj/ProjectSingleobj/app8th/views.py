@@ -14,5 +14,9 @@ def home(req):
      # data4=Stu.objects.order_by('name').first()
      # data4=Stu.objects.order_by('name').last()
 
-     Stu.objects.create(name="Ravi",email='ravi@gamail.com',city='Satna',contact=9767798978)
+     # Stu.objects.create(name="Ravi",email='ravi@gamail.com',city='Satna',contact=9767798978)
+     data,create=Stu.objects.get_or_create(name="Yogesh",email='yogesh@gamail.com',city='Indore',contact=6978679148)
+     print(data)
+     print(create)
+     
      # return  HttpResponse(data4)
