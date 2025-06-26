@@ -53,6 +53,7 @@ class Basedata2(models.Model):
      branch=models.CharField()
      fees=models.IntegerField()
 
+
 class Proxy(Basedata2):
      class Meta:
         proxy=True
