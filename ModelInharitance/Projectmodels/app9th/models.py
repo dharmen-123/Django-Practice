@@ -11,8 +11,12 @@ class BaseInfo(models.Model):
 
 class Employee(BaseInfo):
      empid=models.IntegerField()
+     class Meta:
+           db_table='Employee'
 
 
 class Client(BaseInfo):
      userid=models.IntegerField()
      prject=models.CharField()
+     class Meta:
+           db_table='Client'
