@@ -13,6 +13,7 @@ class Employee(BaseInfo):
      empid=models.IntegerField()
      class Meta:
            db_table='Employee'
+           verbose_name_plural='Employee'
 
 
 class Client(BaseInfo):
@@ -20,3 +21,5 @@ class Client(BaseInfo):
      prject=models.CharField()
      class Meta:
            db_table='Client'
+           verbose_name_plural='Client'
+           
