@@ -23,23 +23,37 @@ from django.db import models
 #            db_table='Client'
 #            verbose_name_plural='Client'
            
-#
-class Basedata(models.Model):
+##### Multitable model Inharitance
+
+# class Basedata(models.Model):
+#      name=models.CharField(max_length=50)
+#      email=models.EmailField()
+#      contact=models.IntegerField()
+#      def __str__(self):
+#         return self.name
+
+# class Employe(Basedata):
+#      empid=models.IntegerField()
+#      salary=models.IntegerField()
+#      def __str__(self):
+#         return self.name
+        
+# class Student(Basedata):
+#      Branch=models.CharField()
+#      fees=models.IntegerField()
+#      def __str__(self):
+#         return self.name
+                   
+### Proxy Model Inharitance
+
+class Basedata2(models.Model):
      name=models.CharField(max_length=50)
      email=models.EmailField()
      contact=models.IntegerField()
-     def __str__(self):
-        return self.name
-
-class Employe(Basedata):
-     empid=models.IntegerField()
-     salary=models.IntegerField()
-     def __str__(self):
-        return self.name
-        
-class Student(Basedata):
-     Branch=models.CharField()
+     branch=models.CharField()
      fees=models.IntegerField()
-     def __str__(self):
-        return self.name
-                   
+
+class Proxy(Basedata2):
+     class Meta:
+        proxy=True
+        ordering=['name']
