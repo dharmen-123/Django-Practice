@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Addhar(modes.Model):
+class Addhar(models.Model):
     aadhar=models.IntegerField(unique=True)
     createdate=models.DateTimeField()
     createby=models.CharField(max_length=20)
