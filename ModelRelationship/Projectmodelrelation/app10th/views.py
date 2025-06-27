@@ -35,14 +35,14 @@ def student(request):
     # print(my_list)
     
 def aadhar(request):
-    all_data = Aadhar.objects.all()
+    all_data = Addhar.objects.all()
     print(all_data.values())
     print(all_data.values_list())
     print("reverse access------------------------- related_name='student_info'") 
-    aadhar = Aadhar.objects.get(aadhar='12345')
+    aadhar = Addhar.objects.get(aadhar='12345')
     print(aadhar)
     print(aadhar.student_info)
-    print(aadhar.student_info.stu_name)
-    print(aadhar.student_info.stu_email)
+    print(aadhar.student_info.name)
+    print(aadhar.student_info.email)
     print(aadhar.student_info.contact)
     print(aadhar.student_info.aadhar_no)
