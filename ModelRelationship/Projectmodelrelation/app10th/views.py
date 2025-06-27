@@ -45,4 +45,4 @@ def aadhar(request):
     print(aadhar.student_info.name)
     print(aadhar.student_info.email)
     print(aadhar.student_info.contact)
-    print(aadhar.student_info.aadhar_no)
+    print(aadhar.student_info.addhar_no)

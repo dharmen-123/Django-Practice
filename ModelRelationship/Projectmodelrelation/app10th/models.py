@@ -13,6 +13,6 @@ class Student(models.Model):
     name=models.CharField(max_length=50)
     email=models.EmailField()
     contact=models.IntegerField()
-    addhar_no=models.OneToOneField(Addhar,on_delete=models.PROTECT,to_field='aadhar',related_name='student')
+    addhar_no=models.OneToOneField(Addhar,on_delete=models.PROTECT,to_field='aadhar',related_name='student_info')
     def __str__(self):
         return self.name
