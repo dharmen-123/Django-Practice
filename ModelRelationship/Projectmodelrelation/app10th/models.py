@@ -16,3 +16,4 @@ class Student(models.Model):
     addhar_no=models.OneToOneField(Addhar,on_delete=models.PROTECT,to_field='aadhar',related_name='student_info')
     def __str__(self):
         return self.name
+

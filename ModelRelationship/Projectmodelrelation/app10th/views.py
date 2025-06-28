@@ -9,12 +9,12 @@ def student(request):
     data = Student.objects.all()
     print(data.values())
     print("forword access-----------------")
-    student = Student.objects.get(name = "Rahul")
+    student = Student.objects.get(name = "Dharmendra Chilhate")
     print(student)
-    stu_to_aadhar = student.aadhar_no
+    stu_to_aadhar = student.addhar_no
     print(stu_to_aadhar.aadhar)
     print(stu_to_aadhar.createdate)
-    print(stu_to_aadhar.createdby)
+    print(stu_to_aadhar.createby)
     # my_list = []
     # for i in all_data:
     #     name = i.stu_name
