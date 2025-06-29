@@ -13,7 +13,7 @@ def home(req):
 
     ### Reverse access #####
     fuel = Fuel.objects.get(id=1)
-    x=fuel.fuel.cars.all()
+    x=fuel.cars.all()
     print(fuel.fuelname)
     for i in x :
         print(i)
