@@ -10,6 +10,7 @@ def home(req):
     print(department.dep_name)
     print(department.dep_datail)
 
+
    ####### Reverse access #######
     department1 =Department.objects.get(dep_name="CSE")
     studentsinAI=department1.student_data.all()
