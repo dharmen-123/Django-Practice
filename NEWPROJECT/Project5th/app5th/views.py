@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from .models import Student
+from .models import Student, Query
 def home(req):
     return render(req,'home.html')
 
@@ -91,5 +91,15 @@ def query(req,pk):
     return render(req,'dashboard.html',{'data':data,'query':pk})
 
 def querydata(req, pk):
+    userdata=Student.objects.get(id=pk)
+    name=req.POST.get('name')
+    email=req.POST.get('email')
+    query=req.POST.get('query')
+    Query.objects.create(name=name, email=email, query=query)
+    data={    
+       'id':userdata.id,   
+       'name': userdata.name,  
+       'email': userdata.email ,  
+       }    
+    return render(req,'dashboard.html',{'data':data})
     
-    pass
