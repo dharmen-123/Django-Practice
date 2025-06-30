@@ -55,6 +55,7 @@ def logindata(req):
            pass1=userdata.password
            if password==pass1:
                 data={
+                'id':userdata.id,   
                 'name': userdata.name,  
                 'email': userdata.email , 
                 'detail': userdata.detail,
@@ -64,8 +65,8 @@ def logindata(req):
                 'dob': userdata.dob  ,
                 'password': userdata.password,  
                 'profile_pic': userdata.profile_pic,  
-                'resume': userdata.resume
-                }  
+                'resume': userdata.resume 
+                }    
                 return render(req,'dashboard.html',{'data':data})
            else :
               msg="Email and password is not matched"
