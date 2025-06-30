@@ -12,5 +12,15 @@
      {% csrf_token %}
   <button type="submit">Query</button>
 </form>
+{% if query %} 
+   <form action="{% url 'querydata' pk=data.id %}" method="post">
+       {% csrf_token %}
+        Name: <input type="text" name="name" value="{{data.name}}" readonly>
+        Email: <input type="text" name="email" value="{{data.email}}" readonly>
+        Query: <input type="text" name="query" value="" >
+        
+        <button type="submit">Submit query</button>
+    </form>
+{% endif %}
 <br><br><br>
 {% endblock  %}

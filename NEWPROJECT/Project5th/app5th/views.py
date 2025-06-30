@@ -82,5 +82,14 @@ def dashboard(req):
      
 
 def query(req,pk):
-     userdata=Student.objects.get(id=pk)
-     
+    userdata=Student.objects.get(id=pk)
+    data={    
+       'id':userdata.id,   
+       'name': userdata.name,  
+       'email': userdata.email ,  
+       }    
+    return render(req,'dashboard.html',{'data':data,'query':pk})
+
+def querydata(req, pk):
+    
+    pass

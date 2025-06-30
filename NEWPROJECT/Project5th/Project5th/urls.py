@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logindata/', views.logindata, name='logindata'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('query/<int:pk/', views.query, name='query'),
+    path('query/<int:pk>/', views.query, name='query'),
+    path('querydata/<int:pk>/', views.querydata, name='querydata'),
    
 ]
