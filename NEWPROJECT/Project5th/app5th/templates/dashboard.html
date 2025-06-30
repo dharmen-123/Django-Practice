@@ -7,7 +7,10 @@
 {% block content %}
 <br><br>
 {{data}}
-
-
+<br>
+<form action="{% url 'query' pk=data.id %}" method="post">
+     {% csrf_token %}
+  <button type="submit">Query</button>
+</form>
 <br><br><br>
 {% endblock  %}

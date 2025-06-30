@@ -29,4 +29,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logindata/', views.logindata, name='logindata'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('query/<int:pk/', views.query, name='query'),
+   
 ]

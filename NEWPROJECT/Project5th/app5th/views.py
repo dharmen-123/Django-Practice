@@ -81,3 +81,6 @@ def dashboard(req):
      return render(req,'dashboard.html')
      
 
+def query(req,pk):
+     userdata=Student.objects.get(id=pk)
+     
