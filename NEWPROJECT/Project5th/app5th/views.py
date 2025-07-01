@@ -103,3 +103,8 @@ def querydata(req, pk):
        }    
     return render(req,'dashboard.html',{'data':data})
     
+def allquery(req,pk):
+    userdata=Student.objects.get(id=pk)
+    email=userdata.email
+    aquery=Query.objects.filter(email=email)
+    return render(req,'dashboard.html',{'data':userdata,'aquery':aquery})

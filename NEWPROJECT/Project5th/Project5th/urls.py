@@ -31,5 +31,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('query/<int:pk>/', views.query, name='query'),
     path('querydata/<int:pk>/', views.querydata, name='querydata'),
+    path('allquery/<int:pk>/', views.allquery, name='allquery'),
    
 ]
