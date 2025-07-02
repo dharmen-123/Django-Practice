@@ -116,6 +116,7 @@ def edit(req,id,pk):
     return render(req,'dashboard.html',{'data':data, 'editdata':editquery})
     
 def editdata(req,pk,id):
+    if req.method=='POST':
           name=req.POST.get('name')
           email=req.POST.get('email')
           query=req.POST.get('query')

@@ -1,20 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     {% block link %}{% endblock  %}
-     {% block title %}{% endblock  %}
+    <title>{% block title %}{% endblock  %}</title> 
+     {% block link %}
+     <link rel="stylesheet" href="{% static "CSS/style.css" %}">
+     {% endblock  %}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
 </head>
 <body>
 	
-	<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand" href="#">CAR DEALER</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-warning" id="navbar">
+        <a class="navbar-brand" href="#">Luxury Interior</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,24 +27,13 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Shop Pre-Owned</a>
+                    <a class="nav-link" href="#">Interior</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Shop New Cars</a>
+                    <a class="nav-link" href="#">Collections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clearence Event</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Resources
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Carfax</a>
-                        <a class="dropdown-item" href="#">Carproof</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Omnivic</a>
-                    </div>
+                    <a class="nav-link" href="#">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -101,7 +92,7 @@
             </div>
         </div>
     </div>
-    </nav>
+</nav>
 
 {% block content %}{% endblock  %}
 
