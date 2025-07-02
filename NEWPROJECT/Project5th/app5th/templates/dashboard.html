@@ -54,14 +54,13 @@ Email: {{data.email}}
     </tbody>
 </table>
 {% endif %}
-{% if edquery %} 
-   <form action="{% url 'edquery' ed=edquery.id %}" method="post">
+{% if editdata %} 
+   <form action="{% url 'editdata' id=editdata.id  pk=data.id %}" method="post">
        {% csrf_token %}
-        Name: <input type="text" name="name" value="{{edquery.name}}" readonly>
-        Email: <input type="text" name="email" value="{{edquery.email}}" readonly>
-        Query: <input type="text" name="query" value="{{edquery.query}}" >
-
-        <button type="submit">Submit query</button>
+        Name: <input type="text" name="name" value="{{editdata.name}}" readonly>
+        Email: <input type="text" name="email" value="{{editdata.email}}" readonly>
+        Query: <input type="text" name="query" value="{{editdata.query}}" >
+        <button type="submit">Update query</button>
     </form>
 {% endif %}
 </div>

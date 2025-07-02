@@ -110,4 +110,19 @@ def allquery(req,pk):
     return render(req,'dashboard.html',{'data':userdata,'aquery':aquery})
 
 def edit(req,id,pk):
-    print(id,pk)
+    editquery=Query.objects.get(id=id)
+    userdata=Student.objects.get(id=pk)
+    data={'id':userdata.id, 'name': userdata.name,'email': userdata.email,'detail': userdata.detail,'phone': userdata.phone,'education': userdata.education,'gender': userdata.gender,'dob': userdata.dob ,'password': userdata.password,'profile_pic': userdata.profile_pic,'resume': userdata.resume }    
+    return render(req,'dashboard.html',{'data':data, 'editdata':editquery})
+    
+def editdata(req,pk,id):
+          name=req.POST.get('name')
+          email=req.POST.get('email')
+          query=req.POST.get('query')
+          oldquery=Query.objects.get(id=id)
+          oldquery.query=query
+          oldquery.save()
+          userdata=Student.objects.get(id=pk)
+          data={'id':userdata.id, 'name': userdata.name,'email': userdata.email,'detail': userdata.detail,'phone': userdata.phone,'education': userdata.education,'gender': userdata.gender,'dob': userdata.dob ,'password': userdata.password,'profile_pic': userdata.profile_pic,'resume': userdata.resume }    
+          aquery=Query.objects.filter(email=email)
+          return render(req,'dashboard.html',{'data':data,'aquery':aquery})

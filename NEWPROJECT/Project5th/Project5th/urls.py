@@ -33,6 +33,7 @@ urlpatterns = [
     path('querydata/<int:pk>/', views.querydata, name='querydata'),
     path('allquery/<int:pk>/', views.allquery, name='allquery'),
     path('edit/<int:id>/<int:pk>/', views.edit, name='edit'),
+    path('editdata/<int:id>/<int:pk>/', views.editdata, name='editdata'),
 
 
    
