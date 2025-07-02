@@ -6,16 +6,19 @@
 
 {% block content %}
 <br><br>
+<div style="margin-left:2%;">
 {{data}}
 <br>
 <form action="{% url 'query' pk=data.id %}" method="post">
      {% csrf_token %}
   <button type="submit">Query</button>
 </form>
+<br>
 <form action="{% url 'allquery' pk=data.id %}" method="post">
      {% csrf_token %}
   <button type="submit">All Query</button>
 </form>
+<br>
 {% if query %} 
    <form action="{% url 'querydata' pk=data.id %}" method="post">
        {% csrf_token %}
@@ -26,5 +29,41 @@
         <button type="submit">Submit query</button>
     </form>
 {% endif %}
+{% if aquery %}
+Name: {{data.name}}<br>
+Email: {{data.email}}
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Sno.</th>
+            <th>Query</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in aquery %}
+        <tr>
+           <td>{{i.id}}</td>
+           <td>{{i.query}}</td>
+           <td><a href="{% url 'edit' id=i.id  pk=data.id %}">Edit</a></td>
+           <td><a href="">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if edquery %} 
+   <form action="{% url 'edquery' ed=edquery.id %}" method="post">
+       {% csrf_token %}
+        Name: <input type="text" name="name" value="{{edquery.name}}" readonly>
+        Email: <input type="text" name="email" value="{{edquery.email}}" readonly>
+        Query: <input type="text" name="query" value="{{edquery.query}}" >
+
+        <button type="submit">Submit query</button>
+    </form>
+{% endif %}
+</div>
 <br><br><br>
 {% endblock  %}

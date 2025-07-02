@@ -108,3 +108,6 @@ def allquery(req,pk):
     email=userdata.email
     aquery=Query.objects.filter(email=email)
     return render(req,'dashboard.html',{'data':userdata,'aquery':aquery})
+
+def edit(req,id,pk):
+    print(id,pk)
