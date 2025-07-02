@@ -126,3 +126,12 @@ def editdata(req,pk,id):
           data={'id':userdata.id, 'name': userdata.name,'email': userdata.email,'detail': userdata.detail,'phone': userdata.phone,'education': userdata.education,'gender': userdata.gender,'dob': userdata.dob ,'password': userdata.password,'profile_pic': userdata.profile_pic,'resume': userdata.resume }    
           aquery=Query.objects.filter(email=email)
           return render(req,'dashboard.html',{'data':data,'aquery':aquery})
+
+
+def delete(req,id,pk):
+       ddata=Query.objects.get(id=id)
+       ddata.delete()
+       userdata=Student.objects.get(id=pk)
+       data={'id':userdata.id, 'name': userdata.name,'email': userdata.email,'detail': userdata.detail,'phone': userdata.phone,'education': userdata.education,'gender': userdata.gender,'dob': userdata.dob ,'password': userdata.password,'profile_pic': userdata.profile_pic,'resume': userdata.resume }    
+       aquery=Query.objects.filter(email=userdata.email)
+       return render(req,'dashboard.html',{'data':data,'aquery':aquery})

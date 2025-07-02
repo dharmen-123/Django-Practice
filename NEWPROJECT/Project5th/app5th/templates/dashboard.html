@@ -48,7 +48,7 @@ Email: {{data.email}}
            <td>{{i.id}}</td>
            <td>{{i.query}}</td>
            <td><a href="{% url 'edit' id=i.id  pk=data.id %}">Edit</a></td>
-           <td><a href="">Delete</a></td>
+           <td><a href="{% url 'delete' id=i.id  pk=data.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
