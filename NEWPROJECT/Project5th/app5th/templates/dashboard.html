@@ -30,6 +30,13 @@
     </form>
 {% endif %}
 {% if aquery %}
+  
+<form action="{% url 'search' pk=data.id %}" method="post">
+    {% csrf_token %}
+       <input type="text" name="search" value="">
+       <input type="submit" value="Search">
+</form>
+
 Name: {{data.name}}<br>
 Email: {{data.email}}
 
