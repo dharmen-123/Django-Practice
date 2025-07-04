@@ -37,6 +37,8 @@
        <input type="submit" value="Search">
 </form>
 
+<a href="{% url 'allquery' pk=data.id %}"><button>RESET</button></a>
+<br><br>
 Name: {{data.name}}<br>
 Email: {{data.email}}
 
@@ -52,7 +54,8 @@ Email: {{data.email}}
     <tbody>
         {% for i in aquery %}
         <tr>
-           <td>{{i.id}}</td>
+           {% comment %} <td>{{i.id}}</td> {% endcomment %}
+           <td>{{forloop.counter}}</td>
            <td>{{i.query}}</td>
            <td><a href="{% url 'edit' id=i.id  pk=data.id %}">Edit</a></td>
            <td><a href="{% url 'delete' id=i.id  pk=data.id %}">Delete</a></td>
