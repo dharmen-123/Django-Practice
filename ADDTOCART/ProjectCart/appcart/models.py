@@ -4,4 +4,10 @@ from django.db import models
 
 class ItemInfo(models.Model):
     itemname=models.CharField(max_length=100)
+    itemdes=models.CharField()
+    itemprice=models.IntegerField()
+    itemimage=models.ImageField(upload_to='file')
+    itemcolor=models.CharField()
     
+
+
