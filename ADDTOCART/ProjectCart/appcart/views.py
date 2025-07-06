@@ -30,3 +30,5 @@ def addtocart(req,pk):
     
     return render(req,'addtocart.html',{'data':pk})
     
+def cart(req):
+    return render(req,'addtocart.html')
