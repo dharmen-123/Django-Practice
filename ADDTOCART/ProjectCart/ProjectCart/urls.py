@@ -27,6 +27,7 @@ urlpatterns = [
     path('form/',views.form,name='form'),
     path('user/',views.user,name='user'),
     path('adminlog/',views.adminlog,name='adminlog'),
+    path('addtocart/<int:pk>/',views.addtocart,name='addtocart'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

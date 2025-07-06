@@ -15,19 +15,21 @@
      {% for i in product %}
     <div class="col-sm-6 col-lg-3">
       <div class="card h-100 shadow-sm">
+        <form action="{% url 'addtocart' pk=i.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
         <img src="{{i.itemimage.url}}" class="card-img-top" alt="{{i.itemimage}}">
         <div class="card-body">
           <h5 class="card-title text-primary">{{i.itemname}}</h5>
           <p class="card-text text-muted">{{i.itemdes}}</p>
           <p class="fw-bold text-success">{{i.itemprice}}</p>
-          <p><span class="fw-semibold">Color:</span> <span class="badge bg-dark">{{i.itemcolor}}</span></p>
+          <p><span class="fw-semibold">Color:</span><span class="badge bg-dark">{{i.itemcolor}}</span></p>
            <div class="mb-3">
           <label for="quantity" class="form-label">Quantity</label>
           <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1">
         </div>
-
           <button class="btn btn-outline-primary w-100">Add to Cart</button>
         </div>
+        </form>
       </div>
     </div> 
   {% endfor %}

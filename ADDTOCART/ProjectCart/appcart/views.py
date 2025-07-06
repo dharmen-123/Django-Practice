@@ -26,3 +26,7 @@ def user(req):
 def adminlog(req):
     return render(req,'admin.html')
         
+def addtocart(req,pk):
+    
+    return render(req,'addtocart.html',{'data':pk})
+    
