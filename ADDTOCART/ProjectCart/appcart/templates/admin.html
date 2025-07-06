@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}ADMIN{% endblock  %}
+
+{% block link %}  {% endblock  %}
+
+{% block content %}
+
+    <h1>ADMIN PANEL DASHBOARD</h1>
+{% comment %} 
+    <form action="{% url 'user' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+        <button type="submit">USER PANEL</button>
+    </form> {% endcomment %}
+  <div class="container mt-5">
+    <h2 class="mb-4">Add New Item</h2>
+    <form action="{% url 'form' %}"  method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="itemname" class="form-label">Item Name</label>
+        <input type="text" class="form-control" id="itemname" name="itemname" value="" maxlength="100" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="itemdes" class="form-label">Item Description</label>
+        <input type="text" class="form-control" id="itemdes" name="itemdes" value="" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="itemprice" class="form-label">Item Price</label>
+        <input type="number" class="form-control" id="itemprice" name="itemprice" value="" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="itemimage" class="form-label">Item Image</label>
+        <input type="file" class="form-control" id="itemimage" name="itemimage" value="" accept="image/*" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="itemcolor" class="form-label">Item Color</label>
+        <input type="text" class="form-control" id="itemcolor" name="itemcolor" value="" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+{% endblock  %}
