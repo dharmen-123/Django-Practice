@@ -40,6 +40,7 @@ def addtocart(req,pk):
     return render(req,'user.html')
     
 def cart(req):
-    cart=req.session.get('',[])
-    
-    return render(req,'addtocart.html')
+    cart=req.session.get('cart',[])
+    quantity=req.session.get('quantity',[])
+    print(cart, quantity)
+    # return render(req,'addtocart.html')
