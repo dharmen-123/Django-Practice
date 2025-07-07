@@ -2,11 +2,50 @@
 
 {% block title %}AddtoCart{% endblock  %}
 
-{% block link %}{% endblock  %}
+{% block link %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock  %}
 
 {% block content  %}
 
 <h1>Add to Cart page</h1>
 
+  <div class="container my-5">
+    <h2 class="text-center mb-4">🛍️ Your Cart</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Color</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row -->
+           {% for i in listdata %}
+          <tr>
+            <td>
+              <img src="i.image.url" class="img-fluid rounded" alt="Item Image">
+            </td>
+            <td>{{i.name}}</td>
+            <td>{{i.des}}</td>
+            <td>{{i.color}}</td>
+            <td>{{i.price}}</td>
+            <td>
+              <button class="btn btn-danger btn-sm">Remove</button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock  %}

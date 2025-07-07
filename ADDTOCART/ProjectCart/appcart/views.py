@@ -5,6 +5,8 @@ from .models import ItemInfo
 def home(req):
     return render(req,'home.html')
 
+def register(req):
+    return render(req,'register.html')
 
 def form(req):
     if req.method=='POST':
@@ -42,5 +44,18 @@ def addtocart(req,pk):
 def cart(req):
     cart=req.session.get('cart',[])
     quantity=req.session.get('quantity',[])
-    print(cart, quantity)
-    # return render(req,'addtocart.html')
+    # print(cart, quantity)
+    # return render(req,'addtocart.html') 
+    l=[]
+    totalprice=0
+    for i in cart:
+        data = {
+            'name':i.itemname,
+            'des':i.itemdes,
+            'price':i.itemprice,
+            'color':i.itemcolor,
+            'image':i.itemimage
+        }
+        totalprice+=i.itemprice
+        l.append(data)
+    return render(req,'addtocart.html',{listdata:l})
