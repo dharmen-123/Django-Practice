@@ -27,8 +27,19 @@ def adminlog(req):
     return render(req,'admin.html')
         
 def addtocart(req,pk):
-    
-    return render(req,'addtocart.html',{'data':pk})
+    if req.method=='POST':
+        quantity=req.session.get('quantity',[])
+        cart=req.session.get('cart',[])
+        qua=int(req.POST.get('quantity'))
+        quantity.append(qua)
+        cart.append(pk)
+        req.session['quantity']=quantity
+        req.session['cart']=cart
+        itemdata=ItemInfo.objects.all()
+        return render(req,'user.html',{'product':itemdata})
+    return render(req,'user.html')
     
 def cart(req):
+    cart=req.session.get('',[])
+    
     return render(req,'addtocart.html')
