@@ -49,6 +49,7 @@ def cart(req):
     l=[]
     totalprice=0
     for i in cart:
+        i=ItemInfo.objects.get(id=i)
         data = {
             'name':i.itemname,
             'des':i.itemdes,
@@ -58,4 +59,4 @@ def cart(req):
         }
         totalprice+=i.itemprice
         l.append(data)
-    return render(req,'addtocart.html',{listdata:l})
+    return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice})
