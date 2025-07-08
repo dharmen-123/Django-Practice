@@ -38,7 +38,7 @@
             <td>{{i.quantity}}</td>
             <td>{{i.total}}</td>
             <td>
-              <button class="btn btn-danger btn-sm">Remove</button>
+             <a href="{% url 'remove' rid=i.id %}"><button class="btn btn-danger btn-sm">Remove</button></a>
             </td>
           </tr>
           {% endfor %}

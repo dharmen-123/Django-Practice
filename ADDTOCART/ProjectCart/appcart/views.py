@@ -50,6 +50,34 @@ def cart(req):
     for i,j in zip(cart,quantity):
         i=ItemInfo.objects.get(id=i)
         data = {
+            'id':i.id,
+            'name':i.itemname,
+            'des':i.itemdes,
+            'price':i.itemprice,
+            'color':i.itemcolor,
+            'image':i.itemimage,
+            'quantity':j,
+            'total':i.itemprice*j
+        }
+        totalprice+=i.itemprice
+        l.append(data)
+    return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice})
+
+def remove(req,rid):
+    cart=req.session.get('cart',[])
+    quantity=req.session.get('quantity',[])
+    indexing=cart.index(rid)
+    cart.remove(rid)
+    quantity.pop(indexing)
+    # print(index)
+    # print(cart)
+    # print(quantity)
+    l=[]
+    totalprice=0
+    for i,j in zip(cart,quantity):
+        i=ItemInfo.objects.get(id=i)
+        data = {
+            'id':i.id,
             'name':i.itemname,
             'des':i.itemdes,
             'price':i.itemprice,
