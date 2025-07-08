@@ -33,8 +33,9 @@ def addtocart(req,pk):
         quantity=req.session.get('quantity',[])
         cart=req.session.get('cart',[])
         qua=int(req.POST.get('quantity'))
-        quantity.append(qua)
-        cart.append(pk)
+        if pk not in cart: 
+           quantity.append(qua)
+           cart.append(pk)
         req.session['quantity']=quantity
         req.session['cart']=cart
         itemdata=ItemInfo.objects.all()
@@ -44,18 +45,18 @@ def addtocart(req,pk):
 def cart(req):
     cart=req.session.get('cart',[])
     quantity=req.session.get('quantity',[])
-    # print(cart, quantity)
-    # return render(req,'addtocart.html') 
     l=[]
     totalprice=0
-    for i in cart:
+    for i,j in zip(cart,quantity):
         i=ItemInfo.objects.get(id=i)
         data = {
             'name':i.itemname,
             'des':i.itemdes,
             'price':i.itemprice,
             'color':i.itemcolor,
-            'image':i.itemimage
+            'image':i.itemimage,
+            'quantity':j,
+            'total':i.itemprice*j
         }
         totalprice+=i.itemprice
         l.append(data)
