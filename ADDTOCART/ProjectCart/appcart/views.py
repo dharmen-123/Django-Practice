@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from django.contrib import messages 
 # Create your views here.
 from .models import ItemInfo
 def home(req):
@@ -40,7 +40,7 @@ def addtocart(req,pk):
         req.session['cart']=cart
         itemdata=ItemInfo.objects.all()
         return render(req,'user.html',{'product':itemdata})
-    return render(req,'user.html')
+    # return render(req,'user.html')
     
 def cart(req):
     cart=req.session.get('cart',[])
@@ -66,12 +66,23 @@ def cart(req):
 def remove(req,rid):
     cart=req.session.get('cart',[])
     quantity=req.session.get('quantity',[])
-    indexing=cart.index(rid)
-    cart.remove(rid)
-    quantity.pop(indexing)
-    # print(index)
-    # print(cart)
-    # print(quantity)
+    print(rid)
+    print(type(rid))
+    # r=str(rid)
+    rindex=cart.index(rid)
+    if rid in cart:
+        del cart[rindex]
+        del quantity[rindex]
+        req.session['cart'] = cart
+        req.session['quantity'] = quantity
+        req.session.modified=True   
+        return  redirect('cart')  
+    else:
+
+        return  redirect('cart')  
+    print(rindex)
+    print(cart[rindex])
+    print(quantity[rindex])
     l=[]
     totalprice=0
     for i,j in zip(cart,quantity):
