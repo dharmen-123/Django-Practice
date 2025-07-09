@@ -59,7 +59,7 @@ def cart(req):
             'quantity':j,
             'total':i.itemprice*j
         }
-        totalprice+=i.itemprice
+        totalprice+=i.itemprice*j
         l.append(data)
     return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice})
 
@@ -80,23 +80,7 @@ def remove(req,rid):
     else:
 
         return  redirect('cart')  
-    print(rindex)
-    print(cart[rindex])
-    print(quantity[rindex])
-    l=[]
-    totalprice=0
-    for i,j in zip(cart,quantity):
-        i=ItemInfo.objects.get(id=i)
-        data = {
-            'id':i.id,
-            'name':i.itemname,
-            'des':i.itemdes,
-            'price':i.itemprice,
-            'color':i.itemcolor,
-            'image':i.itemimage,
-            'quantity':j,
-            'total':i.itemprice*j
-        }
-        totalprice+=i.itemprice
-        l.append(data)
-    return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice})
+    
+
+def login(req):
+    return render(req,'login.html')
