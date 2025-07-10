@@ -4,12 +4,37 @@
     box-sizing: border-box;
 }
 
-.custom-footer {
-        /* width: 100%; */
+#custom-footer {
 
      .container-fluid{
-        /* width: 100%; */
-        background-color: grey;
+        background-color: rgba(168, 93, 39, 0.721);
                  
      }
+}
+
+.custom-navbar{
+        background-color: rgba(168, 93, 39, 0.721);
+        height: 60px;
+
+        li{
+         font-size: 20px;
+        }
+        li:hover{
+           background-color: white;
+          border-radius: 25px;
+         }
+}
+
+.register-page{
+   width: 100%;
+   height: 100vh;
+   background: url("../Images/registrationbac.png") , no-repeat center center;
+   background-size: cover;
+}
+
+.login-page{
+   width: 100%;
+   height: 90vh;
+   background: url("../Images/loginbackground.png") , no-repeat center center;
+   background-size: cover;
 }

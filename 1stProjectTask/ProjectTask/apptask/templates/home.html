@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block title %}{% endblock  %}
@@ -8,7 +9,118 @@
 
 
 {% block content %}
-<br>
-<h1>This is home page</h1>
-<br>
+<div id="furnitureCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-inner">
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active" style="height: 60vh;">
+      <img src="{% static 'Images/loginbackground.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Modern Sofa">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h3 class="text-warning">Elegant Living</h3>
+        <p>Discover our premium range of modern sofas and lounge chairs.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item" style="height: 60vh;">
+      <img src="{% static 'Images/registrationbac.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Dining Set">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h3 class="text-warning">Dine in Style</h3>
+        <p>Explore handcrafted dining sets for every occasion.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item" style="height: 60vh;">
+      <img src="{% static 'Images/loginbackground.png' %}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Bedroom Furniture">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h3 class="text-warning">Cozy Bedrooms</h3>
+        <p>Transform your sleep space with our elegant bedroom collections.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="carousel-item" style="height: 60vh;">
+      <img src="{% static 'Images/registrationbac.png' %} " class="d-block w-100 h-100" style="object-fit: cover;" alt="Office Furniture">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <h3 class="text-warning">Work in Comfort</h3>
+        <p>Stylish and ergonomic office furniture for your workspace.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#furnitureCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#furnitureCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+ {% comment %} CARD  {% endcomment %}
+<div class="container py-5">
+  <h2 class="text-center mb-4 text-primary">Top Interior Design </h2>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+
+    <!-- Card 1 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'Images/registrationbac.png' %}" class="card-img-top" alt="Houzz">
+        <div class="card-body">
+          <h5 class="card-title text-success">Houzz</h5>
+          <p class="card-text">A leading platform for home remodeling and design inspiration.</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="https://www.houzz.com" target="_blank" class="btn btn-outline-primary w-100">View More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'Images/loginbackground.png' %}" class="card-img-top" alt="ArchDaily">
+        <div class="card-body">
+          <h5 class="card-title text-success">ArchDaily</h5>
+          <p class="card-text">Explore cutting-edge architecture and interior design projects worldwide.</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="https://www.archdaily.com" target="_blank" class="btn btn-outline-primary w-100">View More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'Images/registrationbac.png' %}" class="card-img-top" alt="Dezeen">
+        <div class="card-body">
+          <h5 class="card-title text-success">Dezeen</h5>
+          <p class="card-text">Award-winning online magazine covering the best in design and interiors.</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="https://www.dezeen.com" target="_blank" class="btn btn-outline-primary w-100">View More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'Images/loginbackground.png' %}" class="card-img-top" alt="Interior Design">
+        <div class="card-body">
+          <h5 class="card-title text-success">Interior Design</h5>
+          <p class="card-text">A go-to source for interior design trends, news, and inspiration.</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <a href="https://www.interiordesign.net" target="_blank" class="btn btn-outline-primary w-100">View More</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock  %}
