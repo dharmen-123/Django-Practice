@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}Servies{% endblock  %}
 
@@ -7,7 +7,112 @@
 
 
 {% block content %}
-<br>
-<h1>This is Services page</h1>
-<br>
+<section class="py-5 bg-light" id="services">
+  <div class="container">
+    <h2 class="text-center fw-bold text-warning mb-5">Our Services</h2>
+      <!-- Office Designs -->
+<section class="py-5 bg-light" id="office-designs">
+  <div class="container">
+    <h2 class="text-center fw-bold fs-4 mb-4">Office Designs</h2>
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/office1.jpg' %}" class="img-fluid rounded shadow-sm" alt="Office Design 1">
+        <p class="mt-2 text-muted">Minimalist office workspace with natural tones</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/office2.jpg' %}" class="img-fluid rounded shadow-sm" alt="Office Design 2">
+        <p class="mt-2 text-muted">Collaborative meeting zone with acoustic walls</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/office3.jpg' %}" class="img-fluid rounded shadow-sm" alt="Office Design 3">
+        <p class="mt-2 text-muted">Executive cabin with sleek contemporary feel</p>
+      </div>
+    </div>
+  </div>
+</section>
+      <!-- Company Designs -->
+<section class="py-5 bg-white" id="company-designs">
+  <div class="container">
+    <h2 class="text-center fw-bold fs-4 mb-4">Company Designs</h2>
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/company1.jpg' %}" class="img-fluid rounded shadow-sm" alt="Company Design 1">
+        <p class="mt-2 text-muted">Reception area with brand-themed lighting</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/company2.jpg' %}" class="img-fluid rounded shadow-sm" alt="Company Design 2">
+        <p class="mt-2 text-muted">Boardroom setup with acoustic panels and tech integration</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/company3.jpg' %}" class="img-fluid rounded shadow-sm" alt="Company Design 3">
+        <p class="mt-2 text-muted">Lobby lounge with contemporary art and open seating</p>
+      </div>
+    </div>
+  </div>
+</section>
+      <!-- Hall Designs -->
+<section class="py-5 bg-light" id="hall-designs">
+  <div class="container">
+    <h2 class="text-center fw-bold fs-4 mb-4">Hall Designs</h2>
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/hall1.jpg' %}" class="img-fluid rounded shadow-sm" alt="Hall Design 1">
+        <p class="mt-2 text-muted">Banquet-style layout with chandeliers and soft tones</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/hall2.jpg' %}" class="img-fluid rounded shadow-sm" alt="Hall Design 2">
+        <p class="mt-2 text-muted">Multipurpose hall with modular furnishings</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="{% static 'Images/hall3.jpg' %}" class="img-fluid rounded shadow-sm" alt="Hall Design 3">
+        <p class="mt-2 text-muted">Royal-themed hall with gold accents and draped ceilings</p>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Wall Paintings -->
+    <div class="row my-5">
+      <div class="col text-center">
+        <h3 class="fw-bold">Wall Paintings</h3>
+        <p class="lead">Unique art pieces and custom murals that transform blank walls into conversation starters.</p>
+        <img src="{% static 'Images/wallpainting.jpg' %}" class="img-fluid rounded shadow-sm" alt="Wall Paintings">
+      </div>
+    </div>
+
+    <!-- Offers Section -->
+    <div class="row my-5 bg-white p-4 rounded shadow-sm">
+      <div class="col text-center">
+        <h3 class="fw-bold text-success">Special Offers</h3>
+        <p class="lead">Get up to <strong>30% off</strong> on first-time consultations and seasonal packages!</p>
+        <a href="#" class="btn btn-outline-success">View Offers</a>
+      </div>
+    </div>
+
+    <!-- Interior Gallery -->
+    <div class="row my-5">
+      <div class="col text-center">
+        <h3 class="fw-bold">Interior Gallery</h3>
+        <p class="lead">Explore some of our favorite transformations and featured designs.</p>
+        <div class="row g-3">
+          <div class="col-md-4"><img src="{% static 'Images/gallery1.jpg' %}" class="img-fluid rounded shadow-sm" alt="Gallery 1"></div>
+          <div class="col-md-4"><img src="{% static 'Images/gallery2.jpg' %}" class="img-fluid rounded shadow-sm" alt="Gallery 2"></div>
+          <div class="col-md-4"><img src="{% static 'Images/gallery3.jpg' %}" class="img-fluid rounded shadow-sm" alt="Gallery 3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Customers -->
+    <div class="row my-5">
+      <div class="col text-center">
+        <h3 class="fw-bold">Our Customers</h3>
+        <p class="lead">Trusted by clients across industries, from startups to luxury estates.</p>
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-md-3"><img src="{% static 'Images/customer1.png' %}" class="img-fluid" alt="Customer 1"></div>
+          <div class="col-6 col-md-3"><img src="{% static 'Images/customer2.png' %}" class="img-fluid" alt="Customer 2"></div>
+          <div class="col-6 col-md-3"><img src="{% static 'Images/customer3.png' %}" class="img-fluid" alt="Customer 3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock  %}

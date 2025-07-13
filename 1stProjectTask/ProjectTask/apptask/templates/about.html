@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}About{% endblock  %}
 
@@ -12,29 +12,30 @@
 <div style="background-color: #f8f3ef; color: #4e342e;">
 
   <!-- Hero Section -->
-  <section class="text-white text-center py-5" style="background-color: #6d4c41;">
-    <div class="container">
+  <section class="text-white text-center py-5" id="abouthead">
+    <div class="container" id="abouthead">
       <h1 class="display-4 fw-bold">About Luxe Interiors</h1>
       <p class="lead">Crafting timeless spaces with elegance and warmth</p>
     </div>
   </section>
 
   <!-- About Content -->
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="https://via.placeholder.com/600x400?text=Our+Studio" class="img-fluid rounded shadow" alt="Our Studio">
-        </div>
-        <div class="col-md-6">
-          <h2 class="fw-bold text-uppercase" style="color: #5d4037;">Our Story</h2>
-          <p class="fs-5">At Luxe Interiors, we believe that every space tells a story. With over a decade of experience in interior design, we specialize in transforming homes and commercial spaces into elegant, functional environments that reflect your personality and lifestyle.</p>
-          <p class="fs-5">From concept to completion, our team blends creativity with craftsmanship to deliver interiors that are both beautiful and livable.</p>
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <div class="image-wrapper text-center">
+          <img src="{% static 'Images/studio.jpeg' %}" class="designer-img img-fluid shadow" alt="Our Studio">
         </div>
       </div>
+      <div class="col-md-6">
+        <h2 class="fw-bold text-uppercase" style="color: #5d4037;">Our Story</h2>
+        <p class="fs-5">At Luxe Interiors, we believe that every space tells a story. With over a decade of experience in interior design, we specialize in transforming homes and commercial spaces into elegant, functional environments that reflect your personality and lifestyle.</p>
+        <p class="fs-5">From concept to completion, our team blends creativity with craftsmanship to deliver interiors that are both beautiful and livable.</p>
+      </div>
     </div>
-  </section>
-
+  </div>
+</section>
   <!-- Services Section -->
   <section class="py-5" style="background-color: #efebe9;">
     <div class="container text-center">
@@ -72,7 +73,7 @@
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card border-0 shadow-sm">
-            <img src="https://via.placeholder.com/300x300?text=Alex" class="card-img-top" alt="Alex">
+            <img src="{% static 'Images/designer1.jpeg' %}" class="card-img-top" alt="Alex">
             <div class="card-body">
               <h5 class="card-title">Alex Sharma</h5>
               <p class="card-text">Lead Designer with a passion for modern minimalism.</p>
@@ -81,7 +82,7 @@
         </div>
         <div class="col-md-4">
           <div class="card border-0 shadow-sm">
-            <img src="https://via.placeholder.com/300x300?text=Priya" class="card-img-top" alt="Priya">
+            <img src="{% static 'Images/designer3.jpg' %}" class="card-img-top" alt="Priya">
             <div class="card-body">
               <h5 class="card-title">Priya Mehta</h5>
               <p class="card-text">Color specialist and expert in space optimization.</p>
@@ -90,7 +91,7 @@
         </div>
         <div class="col-md-4">
           <div class="card border-0 shadow-sm">
-            <img src="https://via.placeholder.com/300x300?text=Ravi" class="card-img-top" alt="Ravi">
+            <img src="{% static 'Images/designer2.jpeg' %}" class="card-img-top" alt="Ravi">
             <div class="card-body">
               <h5 class="card-title">Ravi Kapoor</h5>
               <p class="card-text">Furniture designer blending tradition with innovation.</p>
@@ -101,17 +102,9 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="text-white text-center py-4" style="background-color: #4e342e;">
-    <div class="container">
-      <p class="mb-1">&copy; 2025 Luxe Interiors. All rights reserved.</p>
-      <p class="mb-0">Designed with passion and precision.</p>
-    </div>
-  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Bootstrap Icons (optional) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </div>
   {% endblock  %}
