@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block  title %}{% endblock  %}
+{% block  link %}{% endblock  %}
+
+{% block  content %} 
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="bg-white p-4 rounded shadow w-100" style="max-width: 400px;">
+      <h2 class="text-center mb-4">Login</h2>
+      <form action="{% url 'logindata' %}"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" required />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="remember" />
+          <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <div class="text-center mt-3">
+          <a href="#">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock  %}
