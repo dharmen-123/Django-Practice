@@ -54,7 +54,8 @@ def logindata(req):
                 'password': userdata.password,
                 'cpassword': userdata.cpassword
             }
-            return render(req, 'dashboard.html', {'data': data})
+            # return render(req, 'dashboard.html', {'data': data})
+            return redirect(dashboard)
         else:
             msg = "Email and password do not match"
             return render(req, 'login.html', {'msg': msg})
