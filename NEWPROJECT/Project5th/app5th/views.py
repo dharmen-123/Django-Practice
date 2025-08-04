@@ -44,6 +44,7 @@ def register(request):
     else:
         return render(request,'register.html')
 
+
 def logindata(req):
     if req.method=="POST":
         email = req.POST.get('email')

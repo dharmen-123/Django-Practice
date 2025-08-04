@@ -9,8 +9,89 @@
 
 
 <h1>User dashboard</h1>
-<br>
 {{data}}
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+      <button class="btn btn-outline-primary me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+        ☰
+      </button>
+      <a class="navbar-brand" href="#">Dashboard</a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              🔔 Notifications
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">New message</a></li>
+              <li><a class="dropdown-item" href="#">Server update</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar Offcanvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="#">🏠 Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">📊 Analytics</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">👤 Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">⚙️ Settings</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container-fluid mt-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card text-bg-primary">
+          <div class="card-body">
+            <h5 class="card-title">Users</h5>
+            <p class="card-text">1,245 Active Users</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-bg-success">
+          <div class="card-body">
+            <h5 class="card-title">Revenue</h5>
+            <p class="card-text">$12,300 This Month</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-bg-warning">
+          <div class="card-body">
+            <h5 class="card-title">Tasks</h5>
+            <p class="card-text">23 Pending Tasks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Placeholder -->
+    <div class="row mt-4">
+      <div class="col">
+        <div class="card border-info">
+          <div class="card-header bg-info text-white">📈 User Growth</div>
+          <div class="card-body text-center">
+            <p class="text-muted">[Chart Placeholder]</p>
+            <p>You can integrate Chart.js or another library here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <br><br><br><br>
 {% endblock  %}
