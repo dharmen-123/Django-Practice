@@ -47,7 +47,7 @@ def dashboard(req):
 
 def logout(req):
     req.session.flush()
-    return render(req,'home.html')
+    return redirect(home)
 
 def logindata(req):
     if req.method == "POST":
