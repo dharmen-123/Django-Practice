@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import Student
+
 def home(req):
      return render(req,'home.html')
 
@@ -33,7 +34,20 @@ def register(request):
     return render(request, 'register.html')
 
 def dashboard(req):
-    return render(req,'dashboard.html')
+    pk=req.session.get('userid')
+    userdata = Student.objects.get(id=pk)
+    data = {
+         'id': userdata.id,
+         'name': userdata.name,
+         'email': userdata.email,
+         'password': userdata.password,
+         'cpassword': userdata.cpassword
+        }
+    return render(req, 'dashboard.html', {'data': data})
+
+def logout(req):
+    req.session.flush()
+    return render(req,'home.html')
 
 def logindata(req):
     if req.method == "POST":
@@ -55,7 +69,8 @@ def logindata(req):
                 'cpassword': userdata.cpassword
             }
             # return render(req, 'dashboard.html', {'data': data})
-            return redirect(dashboard)
+            req.session['userid']= userdata.id 
+            return redirect(dashboard)  
         else:
             msg = "Email and password do not match"
             return render(req, 'login.html', {'msg': msg})
