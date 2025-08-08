@@ -32,7 +32,7 @@ def addtocart(req,pk):
     if req.method=='POST':
         quantity=req.session.get('quantity',[])
         cart=req.session.get('cart',[])
-        qua=int(req.POST.get('quantity'))
+        qua=int(req.POST.get('quantity'))  
         if pk not in cart: 
            quantity.append(qua)
            cart.append(pk)
@@ -78,9 +78,7 @@ def remove(req,rid):
         req.session.modified=True   
         return  redirect('cart')  
     else:
-
         return  redirect('cart')  
     
-
 def login(req):
     return render(req,'login.html')
