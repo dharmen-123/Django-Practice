@@ -40,7 +40,7 @@ def addtocart(req,pk):
         req.session['cart']=cart
         itemdata=ItemInfo.objects.all()
         return render(req,'user.html',{'product':itemdata})
-    # return render(req,'user.html')
+    return render(req,'user.html')
     
 def cart(req):
     cart=req.session.get('cart',[])
