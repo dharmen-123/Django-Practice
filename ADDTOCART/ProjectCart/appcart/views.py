@@ -27,7 +27,13 @@ def user(req):
 
 def adminlog(req):
     return render(req,'admin.html')
+
+def addtocart(req,pk):
+    if req.method=='POST':
+        cart=req,session.get('cart',{})
         
+    pass
+
 def addtocart(req,pk):
     if req.method=='POST':
         quantity=req.session.get('quantity',[])
