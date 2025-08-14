@@ -87,3 +87,6 @@ def remove(req,rid):
     
 def login(req):
     return render(req,'login.html')
+
+def payment(req):
+    pass
