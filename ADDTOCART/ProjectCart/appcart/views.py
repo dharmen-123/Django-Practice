@@ -3,10 +3,14 @@ from django.contrib import messages
 # Create your views here.
 from .models import ItemInfo
 def home(req):
-    return render(req,'home.html')
+    cart=req.session.get('cart',[])
+    count=len(cart)
+    return render(req,'home.html',{'count':count})
 
 def register(req):
-    return render(req,'register.html')
+    cart=req.session.get('cart',[])
+    count=len(cart)
+    return render(req,'register.html',{'count':count})
 
 def form(req):
     if req.method=='POST':
@@ -21,8 +25,10 @@ def form(req):
        
 
 def user(req):
+    cart=req.session.get('cart',[])
+    count=len(cart)
     itemdata=ItemInfo.objects.all()
-    return render(req,'user.html',{'product':itemdata})
+    return render(req,'user.html',{'product':itemdata,'count':count})
     
 
 def adminlog(req):
@@ -34,6 +40,8 @@ def adminlog(req):
         
 
 def addtocart(req,pk):
+    cart=req.session.get('cart',[])
+    count=len(cart)
     if req.method=='POST':
         quantity=req.session.get('quantity',[])
         cart=req.session.get('cart',[])
@@ -44,8 +52,8 @@ def addtocart(req,pk):
         req.session['quantity']=quantity
         req.session['cart']=cart
         itemdata=ItemInfo.objects.all()
-        return render(req,'user.html',{'product':itemdata})
-    return render(req,'user.html')
+        return render(req,'user.html',{'product':itemdata,'count':count})
+    return render(req,'user.html',{'count':count})
     
 def cart(req):
     cart=req.session.get('cart',[])
@@ -66,7 +74,8 @@ def cart(req):
         }
         totalprice+=i.itemprice*j
         l.append(data)
-    return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice})
+        count=len(l)
+    return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice,'count':count})
 
 def remove(req,rid):
     cart=req.session.get('cart',[])
@@ -89,4 +98,10 @@ def login(req):
     return render(req,'login.html')
 
 def payment(req):
+    if req.method=='POST':
+        amount=req.POST.get('amount')*100
+
+    client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
+    data = { "amount": amount, "currency": "INR", "receipt": "order_rcptid_11" }
+    payment = client.order.create(data=data) # Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     pass
