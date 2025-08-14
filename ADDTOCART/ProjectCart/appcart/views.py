@@ -51,6 +51,8 @@ def addtocart(req,pk):
            cart.append(pk)
         req.session['quantity']=quantity
         req.session['cart']=cart
+        cart=req.session.get('cart',[])
+        count=len(cart)
         itemdata=ItemInfo.objects.all()
         return render(req,'user.html',{'product':itemdata,'count':count})
     return render(req,'user.html',{'count':count})
