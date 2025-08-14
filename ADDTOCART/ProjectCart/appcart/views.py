@@ -100,8 +100,8 @@ def login(req):
 def payment(req):
     if req.method=='POST':
         amount=req.POST.get('amount')*100
-
-    client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
-    data = { "amount": amount, "currency": "INR", "receipt": "order_rcptid_11" }
-    payment = client.order.create(data=data) # Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        # payment=order_id
+        client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
+        data = { "amount": amount, "currency": "INR", "receipt": "order_rcptid_11" }
+        payment = client.order.create(data=data) # Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     pass
