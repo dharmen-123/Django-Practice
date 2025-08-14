@@ -8,9 +8,8 @@ def home(req):
     if req.method=='POST':
         form=Imgform(req.POST,req.FILES)
         if form.is_valid:
-            name=req.POST.get('name')
-            image=req.POST.get('image')
-            URLImage.objects.create(name=name,image=image)
+            form.save()
+            form=Imgform()
             item=URLImage.objects.all()
             return render(req,'home.html',{'form':form,'data':item})
         else:
@@ -18,4 +17,5 @@ def home(req):
             return render(req,'home.html',{'form':form,'data':item})
     else :
         form=Imgform()
-        return render(req,'home.html',{'form':form})
+        item=URLImage.objects.all()
+        return render(req,'home.html',{'form':form,'data':item})
