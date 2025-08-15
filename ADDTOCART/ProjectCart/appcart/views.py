@@ -1,7 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages 
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.http import HttpResponseBadRequest
+import razorpay
 # Create your views here.
-from .models import ItemInfo
+from .models import ItemInfo,Payment
 def home(req):
     cart=req.session.get('cart',[])
     count=len(cart)
@@ -76,7 +80,7 @@ def cart(req):
         }
         totalprice+=i.itemprice*j
         l.append(data)
-        count=len(l)
+    count=len(l)
     return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice,'count':count})
 
 def remove(req,rid):
@@ -99,11 +103,62 @@ def remove(req,rid):
 def login(req):
     return render(req,'login.html')
 
-def payment(req):
-    if req.method=='POST':
-        amount=req.POST.get('amount')*100
-        # payment=order_id
-        client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
-        data = { "amount": amount, "currency": "INR", "receipt": "order_rcptid_11" }
-        payment = client.order.create(data=data) # Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    pass
+@csrf_exempt
+def payment(request):
+    if request.method == "POST":
+        try:
+            amount = int(request.POST.get('amount')) * 100  # Convert to paise
+            client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+            order_data = {
+                "amount": amount,
+                "currency": "INR",
+                "receipt": "order_rcptid_11",
+                "payment_capture": 1
+            }
+            order = client.order.create(data=order_data)
+            Payment.objects.create(
+            order_id=order["id"],
+            amount=amount,
+            status="Created"
+            )
+            payment = {
+                "order_id": order["id"],
+                "amount": amount,
+                "razorpay_key": settings.RAZORPAY_KEY_ID,
+                "currency": "INR",
+                "callback_url": "/paymenthandler/"
+            }
+
+            return render(request, "addtocart.html", {'payment': payment})
+
+        except Exception as e:
+            return HttpResponseBadRequest(f"Error: {str(e)}")
+
+    # For GET request, pass payment=None so {% if payment %} works safely
+    return render(request, "addtocart.html", {'payment': None})
+
+
+@csrf_exempt
+def paymenthandler(request):
+    if request.method == "POST":
+        try:
+            client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+            params_dict = {
+                'razorpay_order_id': request.POST.get('razorpay_order_id'),
+                'razorpay_payment_id': request.POST.get('razorpay_payment_id'),
+                'razorpay_signature': request.POST.get('razorpay_signature')
+            }
+            # Verify the payment signature
+            client.utility.verify_payment_signature(params_dict)
+            payment = Payment.objects.get(order_id=request.POST.get('razorpay_order_id'))
+            payment.payment_id = request.POST.get('razorpay_payment_id')
+            payment.signature = request.POST.get('razorpay_signature')
+            payment.status = "Paid"
+            payment.save()
+            # You can now mark the payment as successful in your DB
+            return redirect('home')
+
+        except razorpay.errors.SignatureVerificationError:
+            return redirect('home')
+
+    return HttpResponseBadRequest("Invalid request")

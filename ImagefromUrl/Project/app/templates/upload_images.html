@@ -1,0 +1,119 @@
+<!-- templates/upload_images.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image URLs</title>
+    <style>
+        .form-control {
+            margin-bottom: 10px;
+            width: 300px;
+            padding: 8px;
+        }
+        .preview {
+            margin-top: 10px;
+        }
+        .preview img {
+            max-width: 150px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+                .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 180px;
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card h4 {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function addInputField() {
+            const container = document.getElementById('url-container');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'image_url';
+            input.className = 'form-control';
+            input.placeholder = 'Enter image URL';
+            input.oninput = previewImages;
+            container.appendChild(input);
+        }
+
+        function previewImages() {
+            const previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = ''; // Clear previous previews
+
+            const inputs = document.querySelectorAll('input[name="image_url"]');
+            inputs.forEach(input => {
+                const url = input.value;
+                if (isValidURL(url)) {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.alt = 'Preview';
+                    previewContainer.appendChild(img);
+                }
+            });
+        }
+
+        function isValidURL(url) {
+            try {
+                new URL(url);
+                return /\.(jpg|jpeg|png|gif|webp)$/i.test(url); // Basic image extension check
+            } catch (_) {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Upload Image URLs</h2>
+    <form action="{% url 'upload_images' %}"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+
+        <div id="url-container">
+            <input type="text" name="image_url" class="form-control" placeholder="Enter image URL" oninput="previewImages()">
+        </div>
+
+        <button type="button" onclick="addInputField()">Add More</button>
+        <button type="submit">Submit</button>
+
+        <div id="preview" class="preview"></div>
+    </form>
+        <h2>Uploaded Image Gallery</h2>
+        <form action="{% url 'gallery' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button>Show All images</button>
+        </form>
+        <br><br>
+        <form action="{% url 'search' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="search" value="" id="">
+            <button type="submit">search</button>
+        </form>
+    <div class="gallery">
+        {% for entry in entries %}
+            {% for url in entry.image_urls %}
+                <div class="card">
+                <h4>{{ entry.name }}</h4>
+                    <img src="{{ url }}" alt="Image">
+                </div>
+            {% endfor %}
+            <br>
+        {% empty %}
+            <p>No images uploaded yet.</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

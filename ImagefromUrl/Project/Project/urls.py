@@ -20,5 +20,9 @@ from django.urls import path
 from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name='home'),
+    # path('',views.home,name='home'),
+    path('', views.upload_images, name='upload_images'),
+    path('gallery/',views.gallery_view, name='gallery'),
+    path('search/',views.search, name='search'),
+
 ]
