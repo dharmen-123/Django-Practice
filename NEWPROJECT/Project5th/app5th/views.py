@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from .models import Student, Query
 
 # Create your views here.
-from .models import Student, Query
+
 def home(req):
     return render(req,'home.html')
 
