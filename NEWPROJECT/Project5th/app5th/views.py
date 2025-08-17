@@ -17,7 +17,6 @@ def services(req):
 def login(req):
     return render(req,'login.html')
 
-
 def register(request):
     if request.method=="POST":
         name = request.POST.get('username')
@@ -38,12 +37,10 @@ def register(request):
             if password == cpassword:
                 Student.objects.create(name=name,email=email,detail=detail,phone=phone,education=education,gender=gender,dob=dob,profile_pic=profile_pic,resume=resume,password=password)
                 return redirect('login')
-
             else:
                 return redirect('register')
     else:
         return render(request,'register.html')
-
 
 def logindata(req):
     if req.method=="POST":
@@ -81,7 +78,6 @@ def logindata(req):
 def dashboard(req):
      return render(req,'dashboard.html')
      
-
 def query(req,pk):
     userdata=Student.objects.get(id=pk)
     data={    
