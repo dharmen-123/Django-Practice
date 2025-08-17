@@ -48,7 +48,6 @@
             input.oninput = previewImages;
             container.appendChild(input);
         }
-
         function previewImages() {
             const previewContainer = document.getElementById('preview');
             previewContainer.innerHTML = ''; // Clear previous previews
@@ -64,11 +63,10 @@
                 }
             });
         }
-
         function isValidURL(url) {
             try {
                 new URL(url);
-                return /\.(jpg|jpeg|png|gif|webp)$/i.test(url); // Basic image extension check
+                return /\.(jpg|jpeg|png|gif|webp)$/i.test(url); 
             } catch (_) {
                 return false;
             }
