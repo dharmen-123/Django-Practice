@@ -83,6 +83,7 @@ def cart(req):
     count=len(l)
     return render(req,'addtocart.html',{'listdata':l,'totalprice':totalprice,'count':count})
 
+
 def remove(req,rid):
     cart=req.session.get('cart',[])
     quantity=req.session.get('quantity',[])
