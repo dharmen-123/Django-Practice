@@ -104,6 +104,7 @@ def remove(req,rid):
 def login(req):
     return render(req,'login.html')
 
+
 @csrf_exempt
 def payment(request):
     if request.method == "POST":
@@ -129,13 +130,10 @@ def payment(request):
                 "currency": "INR",
                 "callback_url": "/paymenthandler/"
             }
-
             return render(request, "addtocart.html", {'payment': payment})
-
         except Exception as e:
             return HttpResponseBadRequest(f"Error: {str(e)}")
 
-    # For GET request, pass payment=None so {% if payment %} works safely
     return render(request, "addtocart.html", {'payment': None})
 
 
