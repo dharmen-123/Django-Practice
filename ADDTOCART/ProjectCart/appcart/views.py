@@ -74,7 +74,7 @@ def cart(req):
             'des':i.itemdes,
             'price':i.itemprice,
             'color':i.itemcolor,
-            'image':i.itemimage,
+            'im  age':i.itemimage,
             'quantity':j,
             'total':i.itemprice*j
         }
