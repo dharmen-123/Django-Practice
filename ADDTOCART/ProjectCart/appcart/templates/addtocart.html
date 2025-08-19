@@ -52,20 +52,20 @@
    <div class="text-center">
   <b>Total Amount : {{ totalprice }}</b>
  <input type="number" name="amount" value="{{totalprice}}" hidden>
-  <button type="button" class="btn btn-primary">Pay</button>
+  <button type="submit" class="btn btn-primary">Pay</button>
 </div>
-
   </form>
+
+
   {% if payment %}
   <form action="{% url 'paymenthandler' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <button id="rzp-button1">Pay with Razorpay</button>
         <script src="https://checkout.razorpay.com/v1/checkout.js"
-          data-key="{{key_id}}"
-          data-amount="{{ amount }}"
-          data-currency="INR"
-          data-order_id="{{ order_id }}"
-          data-buttontext="Pay Now"
+          data-key="{{payment.razorpay_key}}"
+          data-amount="{{ payment.amount }}"
+          data-currency="{{payment.currency}}"
+          data-order_id="{{ payment.order_id }}"
+          data-buttontext="Pay with Razorpay"
           data-name="Your Company"
           data-description="Test Transaction"
           data-image="https://yourdomain.com/logo.png"

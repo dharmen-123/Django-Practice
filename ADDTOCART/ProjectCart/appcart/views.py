@@ -4,8 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.http import HttpResponseBadRequest
 import razorpay
-# Create your views here.
 from .models import ItemInfo,Payment
+from django.core.mail import send_mail
+
 def home(req):
     cart=req.session.get('cart',[])
     count=len(cart)
@@ -106,10 +107,13 @@ def login(req):
 
 
 @csrf_exempt
-def payment(request):
-    if request.method == "POST":
-        try:
-            amount = int(request.POST.get('amount')) * 100  # Convert to paise
+def payment(req):
+    
+    print("hello")
+    if req.method == "POST":
+        # try:
+            print("hello")
+            amount = int(req.POST.get('amount')) * 100  # Convert to paise
             client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
             order_data = {
                 "amount": amount,
@@ -130,16 +134,36 @@ def payment(request):
                 "currency": "INR",
                 "callback_url": "/paymenthandler/"
             }
-            return render(request, "addtocart.html", {'payment': payment})
-        except Exception as e:
-            return HttpResponseBadRequest(f"Error: {str(e)}")
+            cart=req.session.get('cart',[])
+            quantity=req.session.get('quantity',[])
+            l=[]
+            totalprice=0
+            for i,j in zip(cart,quantity):
+                i=ItemInfo.objects.get(id=i)
+                data = {
+                    'id':i.id,
+                    'name':i.itemname,
+                    'des':i.itemdes,
+                    'price':i.itemprice,
+                    'color':i.itemcolor,
+                    'im  age':i.itemimage,
+                    'quantity':j,
+                    'total':i.itemprice*j
+                }
+                totalprice+=i.itemprice*j
+                l.append(data)
+            count=len(l)
+            return render(req,'addtocart.html',{'listdata':l,'payment':payment,'totalprice':totalprice,'count':count})
 
-    return render(request, "addtocart.html", {'payment': None})
+    return render(req, "addtocart.html", {'payment': None})
 
 
 @csrf_exempt
 def paymenthandler(request):
+    print("hello.......")
     if request.method == "POST":
+        print("hello.......")
+
         try:
             client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
             params_dict = {
@@ -155,6 +179,14 @@ def paymenthandler(request):
             payment.status = "Paid"
             payment.save()
             # You can now mark the payment as successful in your DB
+
+            send_mail(
+                "Payment done", 
+                "Elctronic Item Payment done Successfully.",
+                premv6264@gmail.com,
+                [chilhatedharmendra@gmail.com],
+                fail_silently=False,
+            )
             return redirect('home')
 
         except razorpay.errors.SignatureVerificationError:
