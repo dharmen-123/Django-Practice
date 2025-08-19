@@ -183,8 +183,8 @@ def paymenthandler(request):
             send_mail(
                 "Payment done", 
                 "Elctronic Item Payment done Successfully.",
-                premv6264@gmail.com,
-                [chilhatedharmendra@gmail.com],
+                "premv6264@gmail.com",
+                ["dharmendrachilhate11@gmail.com"],
                 fail_silently=False,
             )
             return redirect('home')
