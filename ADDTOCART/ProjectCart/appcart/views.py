@@ -7,6 +7,7 @@ import razorpay
 from .models import ItemInfo,Payment
 from django.core.mail import send_mail
 
+
 def home(req):
     cart=req.session.get('cart',[])
     count=len(cart)
@@ -154,7 +155,6 @@ def payment(req):
                 l.append(data)
             count=len(l)
             return render(req,'addtocart.html',{'listdata':l,'payment':payment,'totalprice':totalprice,'count':count})
-
     return render(req, "addtocart.html", {'payment': None})
 
 
