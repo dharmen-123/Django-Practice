@@ -170,7 +170,6 @@ def paymenthandler(request):
                 'razorpay_payment_id': request.POST.get('razorpay_payment_id'),
                 'razorpay_signature': request.POST.get('razorpay_signature')
             }
-            # Verify the payment signature
             client.utility.verify_payment_signature(params_dict)
             payment = Payment.objects.get(order_id=request.POST.get('razorpay_order_id'))
             payment.payment_id = request.POST.get('razorpay_payment_id')
