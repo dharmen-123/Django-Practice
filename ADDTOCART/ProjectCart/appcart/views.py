@@ -157,7 +157,6 @@ def payment(req):
             return render(req,'addtocart.html',{'listdata':l,'payment':payment,'totalprice':totalprice,'count':count})
     return render(req, "addtocart.html", {'payment': None})
 
-
 @csrf_exempt
 def paymenthandler(request):
     print("hello.......")
@@ -178,8 +177,6 @@ def paymenthandler(request):
             payment.signature = request.POST.get('razorpay_signature')
             payment.status = "Paid"
             payment.save()
-            # You can now mark the payment as successful in your DB
-
             send_mail(
                 "Payment done", 
                 "A successful payment is a transaction where a customer's payment method is successfully processed, resulting in the completion of a purchase or service. This means the customer's funds have been transferred to the recipient, and the transaction is finalized without any errors or issues. It's a critical indicator of a smooth checkout experience and directly impacts customer satisfaction and business revenue. ",
@@ -191,5 +188,4 @@ def paymenthandler(request):
 
         except razorpay.errors.SignatureVerificationError:
             return redirect('home')
-
     return HttpResponseBadRequest("Invalid request")
