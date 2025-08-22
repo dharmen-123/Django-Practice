@@ -25,4 +25,5 @@ urlpatterns = [
     path('get/',views.get,name='get'),
     path('delete/',views.delete,name='delete'),
 
+
 ]

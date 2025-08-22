@@ -123,3 +123,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SESSION_COKKIE_AGE= 5   #time in sec
+
+# by default age of session cokkies in django is 3 days
