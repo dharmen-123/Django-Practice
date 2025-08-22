@@ -23,3 +23,6 @@ def delete(request):
         del request.session['username']
         return render(request, 'delete.html')
     return render(request, 'delete.html')
+
+# session age is changes accrding to the requirement from the settings.py file 
+# Session_Cokkie_Age= time in sec
