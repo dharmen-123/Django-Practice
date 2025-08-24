@@ -27,6 +27,16 @@ def home(request):
 # a.name=newname
 #a.save()
 
+### <------------- Delete ----------------->
+# d=Student.objects.get(id=idnumber)
+# d.delete()
+
+### <----------- Bulk Update -------------->
+# a=Student.objects.filter(colonname=colonvalue).update(colonname=newvalue)
+
+## <------- Check the objects method and attributes
+# d1 = Student.objects.get(id=1)
+# dir(d1) it has approx 97 methods 
 
 
 
