@@ -38,6 +38,13 @@ def home(request):
 # d1 = Student.objects.get(id=1)
 # dir(d1) it has approx 97 methods 
 
+## CRUD Methods
+# 1. GET 
+# 2. POST 
+# 3. PUT 
+# 4. PATCH 
+# 5. DELETE
+
 
 
 
