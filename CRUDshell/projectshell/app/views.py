@@ -45,6 +45,7 @@ def home(request):
 # 4. PATCH 
 # 5. DELETE
 
+# CRUD with Cloudnary
 
 
 
