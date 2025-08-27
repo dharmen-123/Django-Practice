@@ -10,3 +10,5 @@ class Student(models.Model):
 
     class Meta:
         db_table='Student'
+
+    
