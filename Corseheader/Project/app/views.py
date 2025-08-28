@@ -3,5 +3,15 @@ from .models import Student
 
 # Create your views here.
 
-def home(request):
-    pass
+from .serializers import Studentserializer
+from rest_framework import generics
+
+
+class StudentList(generics.ListCreateAPIView):
+    queryset =Student.objects.all()
+    serializer_class = Studentserializer
+
+
+class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = Studentserializer
