@@ -142,3 +142,4 @@ def search(req,pk):
     userdata=Student.objects.get(id=pk)
     aquery=Query.objects.filter(Q(query__icontains=sdata) & Q(email=userdata.email))
     return render(req,'dashboard.html',{'data':userdata,'aquery':aquery})
+ 
