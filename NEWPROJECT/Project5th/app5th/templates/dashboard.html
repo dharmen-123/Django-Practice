@@ -9,11 +9,13 @@
 <div style="margin-left:2%;">
 {{data}}  
 <br>
+
 <form action="{% url 'query' pk=data.id %}" method="post">
      {% csrf_token %}
   <button type="submit">Query</button>
 </form>
 <br>
+
 <form action="{% url 'allquery' pk=data.id %}" method="post">
      {% csrf_token %}
   <button type="submit">All Query</button>
