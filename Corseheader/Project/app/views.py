@@ -15,10 +15,8 @@ from rest_framework import generics
 # class StudentDetail(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = Student.objects.all()
 #     serializer_class = Studentserializer
+
 from rest_framework import  viewsets
 class StudentViewSet(viewsets.ModelViewSet):
-    """
-    A simple ViewSet for viewing and editing accounts.
-    """
     queryset = Student.objects.all()
     serializer_class = Studentserializer
