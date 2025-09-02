@@ -126,7 +126,6 @@ def editdata(req,pk,id):
           aquery=Query.objects.filter(email=email)
           return render(req,'dashboard.html',{'data':data,'aquery':aquery})
 
-
 def delete(req,id,pk):
        ddata=Query.objects.get(id=id)
        ddata.delete()
