@@ -136,7 +136,6 @@ def delete(req,id,pk):
        return render(req,'dashboard.html',{'data':data,'aquery':aquery})
 
 from django.db.models import Q
-
 def search(req,pk):
     sdata=req.POST.get('search')
     userdata=Student.objects.get(id=pk)
