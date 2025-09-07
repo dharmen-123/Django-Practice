@@ -14,9 +14,10 @@
             <h4>Register</h4>
           </div>
           <div class="card-body">
-            <form>
-              <!-- Email Field -->
-               <form action="{% url 'sendotp' %}" method="post">
+            <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <form action="{% url 'sendotp' %}" method="post">
                  {% csrf_token %}
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>

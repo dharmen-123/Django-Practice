@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('sendotp/',views.sendotp,name='sendotp'),
+    path('register/',views.register,name='register'),
 
 ]
