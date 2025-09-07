@@ -30,12 +30,10 @@ def register(request):
         userotp=request.POST.get('otp')
         sendotp=request.session.get('otp')
         if userotp == sendotp:
+            del request.session['otp']
             messages.success(request,'Registration successfull')
             return redirect('home')
         else:
             messages.error(request, "Invalid OTP. Please try again.")
             return redirect('home')
-
-
-
-        pass
+    return render(request,'home.html')
