@@ -180,7 +180,7 @@ def paymenthandler(request):
                 "Payment done", 
                 "A successful payment is a transaction where a customer's payment method is successfully processed, resulting in the completion of a purchase or service. This means the customer's funds have been transferred to the recipient, and the transaction is finalized without any errors or issues. It's a critical indicator of a smooth checkout experience and directly impacts customer satisfaction and business revenue. ",
                 "dharmendrachilhate11@gmail.com",
-                ["harsh14thakre@gmail.com"],
+                ["dharmendrachilhate11@gmail.com"],
                 fail_silently=False,
             )
             return redirect('home')
