@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
+from django.contrib import messages
 import random
 # Create your views here.
 
@@ -25,4 +26,16 @@ def sendotp(request):
 
 def register(request):
     if request.method=='POST':
+        email=request.POST.get('email')
+        userotp=request.POST.get('otp')
+        sendotp=request.session.get('otp')
+        if userotp == sendotp:
+            messages.success(request,'Registration successfull')
+            return redirect('home')
+        else:
+            messages.error(request, "Invalid OTP. Please try again.")
+            return redirect('home')
+
+
+
         pass
