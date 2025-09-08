@@ -16,7 +16,7 @@ def sendotp(request):
         otp=generate(request)
         request.session['otp']=otp
         send_mail(
-            "Payment done", 
+            "Register One Time Password", 
             f"This is your Register otp {otp} ",
             "dharmendrachilhate11@gmail.com",
             [email],
