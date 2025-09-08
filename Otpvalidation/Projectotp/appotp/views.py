@@ -13,7 +13,7 @@ def generate(request):
 def sendotp(request):
     if request.method=='POST':
         email=request.POST.get('email')
-        otp=generate()
+        otp=generate(request)
         request.session['otp']=otp
         send_mail(
             "Payment done", 
