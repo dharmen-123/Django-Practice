@@ -30,7 +30,8 @@ def register(request):
         userotp=request.POST.get('otp')
         sendotp=request.session.get('otp')
         if userotp == sendotp:
-            del request.session['otp']
+            if 'otp' in request.session:
+                del request.session['otp']
             messages.success(request,'Registration successfull')
             return redirect('home')
         else:
